@@ -1,0 +1,761 @@
+body {
+    font-size:9pt;
+}
+a:link {
+    text-decoration: none;
+    color:Black;
+}
+a:visited {
+    text-decoration: none;
+    color:Black;
+}
+a:hover {
+    text-decoration: none;
+    color:Black;
+}
+a:active {
+    text-decoration: none;
+    color:Black;
+}
+#class .loading-indicator{
+    font-size:12px;
+    height:18px;
+}
+#TopToolBar
+{
+    /*line-height:16px;
+    padding:8px 6px 8px 10px;*/
+    margin-top:-2px;
+    border-top:solid 1px #8FB3E3;
+    color:#3D69A8;
+    height:32px;
+    background-image:url('../images/grdhead_bk.png');
+}
+
+#TopToolBar a
+{
+    color:#3D69A8;
+}
+
+#ToolButton
+{
+    margin-top:-3px;
+}
+
+.PageToolBar,#PageToolbar
+{
+    background-color:White;
+    padding:2px 10px;
+    height:20px;
+    border:0 none;
+    overflow:hidden;
+    background-image:url('../images/ToolBarBk.gif');
+    background-repeat:repeat-x;
+    vertical-align:middle;
+    position:relative;
+    top: expression(this.offsetParent.scrollTop);
+    z-index: 1000;
+}
+.PageToolBar img,#PageToolbar img
+{
+    border:0;
+    margin-right:4px;
+}
+
+.#PageToolbar a
+{
+    font-size:9pt;
+    display:block;
+    float:left;
+    height:16px;
+    vertical-align:middle;
+    text-align:center;
+    margin-right:4px;
+    padding:4px 0 0 0;
+    width:74px;
+    background-color:White;
+    background-image:url(../images/btn.gif);
+}
+
+#header
+{
+    height:75px;
+    border:0 none;
+    overflow:hidden;
+    background-image:url('../images/HeaderBackground.gif');
+    background-repeat:repeat-x;
+}
+
+/*#header .title {
+    font:normal 16px tahoma, arial, sans-serif;
+    color:white;
+    margin:5px;
+}*/
+
+.loading-indicator {
+    font-size:11px;
+    background-image:url('../../Resources/Ext/images/default/grid/loading.gif');
+    background-repeat: no-repeat;
+    background-position:top left;
+    padding-left:20px;
+    height:18px;
+    text-align:left;
+}
+
+#doc-body .loading-indicator {
+    font:bold 13px  Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    position:absolute;
+    top:35%;
+    left:43%;
+    color:#444;
+    background-image:url(.../../Resources/Ext/images/default/shared/large-loading.gif);
+    background-repeat: no-repeat;
+    background-position:left 5px;
+    padding:10px 10px 10px 38px;
+    text-align:left;
+}
+#loading-mask{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index:20000;
+    background-color:white;
+}
+#loading{
+    position:absolute;
+    left:45%;
+    top:40%;
+    padding:2px;
+    z-index:20001;
+    height:auto;
+}
+#loading img {
+    margin-bottom:5px;
+}
+#loading .loading-indicator{
+    background:white;
+    color:#555;
+    font:bold 13px tahoma,arial,helvetica;
+    padding:10px;
+    margin:0;
+    text-align:center;
+    height:auto;
+}
+
+
+#Footer
+{
+    text-align:center;
+    background-color:#DFE8F6;
+    margin-top:-2px;
+}
+.PagerGrid,.PageSelector
+{
+    height:14px;
+    padding:4px;
+    line-height:14px;
+    background-image  :url(../images/PagerGridBk.gif);
+    background-repeat:repeat-x;
+    border-right:solid 1px #9EB6CE;
+    border-bottom :solid 1px #9EB6CE;
+    border-left :solid 1px #9EB6CE;
+}
+
+.GridTable
+{
+    clear:both;
+    width:100%;
+    border:solid 1px #9EB6CE;
+}
+.GridTableRowOver
+{
+    background-color:#E4ECF7;
+}
+.GridTableRowSelected
+{
+    background-color:#E4ECF7;
+}
+.GridTable th
+{
+    border-right:solid 1px #CCCCCC;
+    border-left:solid 1px #9EB6CE;
+    border-top:solid 1px #9EB6CE;
+    border-bottom:solid 1px #CCCCCC;
+    background-image:url(../images/grid-hrow.gif);
+    background-repeat:repeat-x;
+    height:21px;
+    line-height:21px;
+    padding:0px 3px 0px 3px;
+}
+
+.GridTable td
+{
+    padding:3px 2px 3px 6px;
+    height:18px;
+    border-right:solid 1px #CCCCCC;
+    border-bottom:solid 1px #CCCCCC;
+}
+.GridTableTitle
+{
+    margin:10px 10px;
+    color:Black;
+    font-size:11pt;
+    font-weight:bold;
+}
+
+
+
+.Grid
+{
+    /*border:solid 1px #99BBE8;*/
+}
+.GridCaption
+{
+    background-image:url(../images/grid-caption.gif);
+    height:24px;
+    border-bottom:1px solid #99BBE8;
+    line-height:24px;
+    padding:0 15px;
+    color:#15428B;
+    font-weight:bold
+}
+
+.GridCaption1
+{
+    background-image:url(../images/grid-caption.gif);
+    height:24px;
+    border-bottom:1px solid #99BBE8;
+    border-left:1px solid #99BBE8;
+    border-top:1px solid #99BBE8;
+    border-right:1px solid #99BBE8;
+    line-height:24px;
+    padding:0 15px;
+    color:#15428B;
+    font-weight:bold
+}
+
+.GridTable2
+{
+    clear:both;
+    width:100%;
+    border:solid 1px white;
+}
+.GridTableRowOver2
+{
+    background-color:#DFE8F6;
+}
+.GridTable2 th
+{
+    border-right:solid 1px #D0D0D0;
+    border-bottom:solid 1px #D0D0D0;
+    background-image:url(../images/grid-hrow.gif);
+    background-repeat:repeat-x;
+    color:black;
+    height:15px;
+    padding:4px;
+}
+.GridTable2 td
+{
+    padding:4px;
+    height:12px;
+    border-right:solid 1px #EDEDED;
+    border-bottom:solid 1px #EDEDED;
+}
+.GridTableTitle2
+{
+    margin:10px 10px;
+    color:Black;
+    font-size:11pt;
+    font-weight:bold;
+}
+.Form
+{
+    width:760px;
+    border:solid 1px #99BBE8;
+    border-collapse:collapse;
+}
+.Form td
+{
+    padding:4px;
+    height:9px;
+    border-right:solid 1px #D0D7E5;
+    border-bottom:solid 1px #D0D7E5;
+}
+#LoginInfo
+{
+    width:95%;
+    border:solid 1px #99BBE8;
+    border-collapse:collapse;
+}
+
+#LoginInfo td
+{
+    padding:4px;
+    height:9px;
+    border-right:solid 1px #D0D7E5;
+    border-bottom:solid 1px #D0D7E5;
+}
+
+.Form thead
+{
+    /*background-image:url(../images/grid-caption.gif);
+    height:19px;
+    border-bottom:1px solid #99BBE8;
+    line-height:19px;
+    padding:0 15px;
+    color:#15428B;
+    font-weight:bold*/
+    border-right:solid 1px #9EB6CE;
+    border-left:solid 1px #9EB6CE;
+    border-top:solid 1px #9EB6CE;
+    border-bottom:solid 1px #9EB6CE;
+    background-image:url(../images/grid-hrow.gif);
+    background-repeat:repeat-x;
+    color:#15428b;
+    height:10px;
+    line-height:19px;
+    padding:4px 3px 3px 3px;
+    font-weight:normal;
+    display:none;
+}
+.Form2
+{
+    border:solid 1px #EDEDED;
+    border-collapse:collapse;
+}
+.Form2 td
+{
+    padding:4px;
+    height:12px;
+    border-right:solid 1px #DFE8F6;
+    border-bottom:solid 1px #DFE8F6;
+}
+.Form2 thead
+{
+    height:19px;
+    border-bottom:1px solid #EDEDED;
+    line-height:19px;
+    padding:0 15px;
+    color:#15428B;
+    font-weight:bold
+}
+.Panel
+{
+    padding:0px;
+    background-image:url(../images/group.gif);
+    color:black;
+    height:26px;
+    font-weight:bold;
+    text-align:center;
+
+}
+.button
+{
+    font-size:9pt;
+    border:0;
+    background-color:White;
+    padding:2px 0 0 0;
+    width:74px;
+    height:20px;
+    background-image:url(../images/btn.gif);
+}
+#PageTitle
+{
+    width:100%;
+    line-height:16px;
+    padding-top:6px;
+    padding-left:4px;
+    padding-bottom:4px;
+    margin:2px 0px;
+    border:solid 1px #E8E8E8;
+}
+#FloewTitle
+{
+    width:100%;
+    line-height:16px;
+    padding-top:6px;
+    padding-left:4px;
+    padding-bottom:4px;
+    margin:2px 0px;
+    border:solid 1px #E8E8E8;
+}
+
+.PageLink
+{
+    font-size:9pt;
+    height:22px;
+    vertical-align:middle;
+    text-align:center;
+    margin-right:0px;
+    line-height:22px;
+    background-color:White;
+    background-image:url(../images/btn.gif);
+    background-repeat:no-repeat;
++margin-top:-3px;
+    _margin-top:-3px;
+
+}
+
+#RoleList *
+{
+    border:0;
+}
+.NoBorder td
+{
+    border:0;
+}
+
+.ProjectTypeList
+{
+    overflow:auto
+}
+.ProjectTypeList td
+{
+    border:0;
+    height:10px;
+    padding:0;
+}
+.BorderNone td
+{
+    border:0;
+    height:10px;
+    padding:0;
+}
+.PageTitle1
+{
+    font-size:16pt;
+}
+hr
+{
+    color:#99BBE8;
+    height:2px;
+}
+
+
+.tab-active
+{
+    /*活动标签样式*/
+    font-size: 9pt;
+    white-space:nowrap;
+    font-weight:bold;
+    border-top: 3px solid  #8DB2E3;
+    border-right: 1px solid #8DB2E3;
+    border-left: 1px solid  #8DB2E3;
+    background-color:#DEECFD;
+    text-align: center;
+    padding-top: 3px;
+    padding-right: 8px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+    height:16px;
+    background-image:url(../images/tabactive.gif);
+}
+.tab-inactive
+{
+    /*非活动标签样式*/
+    font-size: 9pt;
+    white-space:nowrap;
+    font-weight:normal;
+    border-top: 1px solid #8DB2E3;
+    border-right: 1px solid #8DB2E3;
+    border-left: 1px solid #8DB2E3;
+    border-bottom: 1px solid #8DB2E3;
+    background-color:  #CCDEF6;
+    text-align: center;
+    padding-top: 3px;
+    padding-right: 8px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+    height:16px;
+    background-image:url(../images/tabinactive.gif);
+}
+.tab-right
+{
+    border-bottom: 1px solid #919B9C;
+}
+.tan-border
+{
+    /*显示内容*/
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #919B9C;
+    border-right: 1px solid #919B9C;
+    border-bottom: 1px solid #919B9C;
+    background-color: #FBFBFC;
+}
+.tab-inactive a:link
+{
+    font-size: 9pt;
+    color:black;
+    text-decoration: none;
+}
+.tab-inactive a:visited
+{
+    font-size: 9pt;
+    color:black;
+    text-decoration: none;
+}
+.tab-inactive a:active
+{
+    font-size: 9pt;
+    color:black;
+    text-decoration: none;
+}
+.tab-inactive a:hover
+{
+    font-size: 9pt;
+    color: black;
+    text-decoration: none;
+}
+.Group
+{
+    line-height:25px;color:#49689D;font-weight:bold;text-align:left;
+    margin:6px 6px;
+    /*width:785px;border-bottom:solid 2px #D7E1F1;*/
+}
+.Group1
+{
+    line-height:25px;color:#49689D;font-weight:bold;text-align:left;width:765px;border-bottom:solid 2px #D7E1F1;margin:6px 6px;
+}
+
+.AddIconButton
+{
+    background-image:url(../images/accept.gif); background-repeat:no-repeat; background-position:center;border:0;width:20px;height:20px;padding:0; background-color:White;margin:0 0 0 0; text-indent: -1000%;text-overflow: clip;
+}
+
+.PageHeader
+{
+    text-align:left;
+    /*Margin-bottom:10px;PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 5px; PADDING-BOTTOM: 3px; PADDING-TOP: 5px; BORDER-BOTTOM: #99BBE8 1px solid*/
+    padding:3px 3px 3px 5px;border-bottom:1px solid #B0C4DE;line-height:15px;
+    background:transparent url(../images/pane_header.png) repeat-x 0 -1px;
+    position: relative;
+    background-color:White;
+    top: expression(this.offsetParent.scrollTop);
+    z-index: 1000;
+}
+.PageTitle
+{
+    color:#15428b;
+    font-size:11px;
+}
+
+
+#container
+{
+    padding:8px 8px;
+}
+
+#container #ContentPanel
+{
+    margin-bottom:4px;
+}
+
+.LoginTable
+{
+    width:618px;
+    height:300px;
+    background-image:url("../images/LoginImage.jpg");
+    background-repeat:no-repeat;
+}
+.LoginTitle
+{
+    font-family: "宋体";
+    font-size:12px;
+    font-weight:bold;
+    color:#000000;
+}
+.LoginInputBox
+{
+    width:148px;
+    border:1px #929292 solid;
+    font-size:9pt;
+    white-space:nowrap;
+}
+.LoginBody
+{
+    background-image:url("../images/background.gif");
+    background-repeat:repeat-x;
+}
+
+.MenuPanelGroup
+{
+    border:solid 1px #D2EEFB;
+    width:170px;
+    padding-bottom:8px;
+    margin-bottom:8px;
+}
+.leftmenu{
+    height:15px;
+    color:#333333;
+    padding-left:4px;
+    background-repeat:no-repeat;
+    cursor:pointer;
+}
+.leftmenu a
+{
+    display:block;
+    float:left;
+    margin-top:10px;
+}
+.leftmenu img
+{
+    float:left;
+    margin-top:8px;
+    margin-right:3px;
+}
+.LeftHeader{
+    color:#333;
+    padding:2px 0px 3px 20px;
+    text-align: left;
+    line-height:30px;
+    color:#000000;
+    font-size:14px;
+    height:30px;
+    background-image:url(../images/bg_head.gif);
+    font-weight:bold;
+}
+.FixedHeader
+{
+    position: relative;
+    top: expression(this.offsetParent.scrollTop);
+    z-index: 10;
+    background-color: #E6ECF0;
+}
+.PromptMessageTotal
+{
+    font-size: 12px;
+    margin-left:2px;
+    margin-right:2px;
+    color:blue;
+    /*font-family: Georgia, "Times New Roman", Times, serif;*/
+}
+.FlowHeader
+{
+    /*text-align:left;
+    padding:3px 3px 3px 10px;
+    border-bottom:1px solid #B0C4DE;line-height:15px;
+    position: relative;
+    background-color:White;
+    top: expression(this.offsetParent.scrollTop);
+    z-index: 1000;*/
+    margin:4px 4px;
+}
+
+.FlowHeader .PageTitle
+{
+    font-weight:bolder;
+    line-height :20px;
+    padding-left:16px;
+    background-image:url(../images/WorkFlowInfo.gif);
+    background-position:left top;
+    background-repeat:no-repeat;
+}
+
+#WorkFlowChart,#WorkFlowHistory
+{
+    background-image:none;
+    padding-left:0px;
+}
+.Subfield
+{
+    font-weight:bolder;
+    margin:10px 0 2px 0;
+    line-height :20px;
+    padding-left:17px;
+    background-image:url(../images/view.gif);
+    background-position:left top;
+    background-repeat:no-repeat;
+}
+.RoleGroup
+{
+    padding:4px;
+    width:100%;
+    text-indent:10px;
+    border-bottom:solid 2px #99BBE8;
+    color:#3764A0;
+    font-weight:bold;
+}
+
+.GridTable1
+{
+    clear:both;
+    border:solid 1px #9EB6CE;
+}
+
+
+.GridTable1 th
+{
+    border-right:solid 1px #CCCCCC;
+    border-left:solid 1px #9EB6CE;
+    border-top:solid 1px #9EB6CE;
+    border-bottom:solid 1px #CCCCCC;
+    background-image:url(../images/grid-hrow.gif);
+    background-repeat:repeat-x;
+    height:21px;
+    line-height:21px;
+    padding:0px 3px 0px 3px;
+}
+
+.GridTable1 td
+{
+    padding:3px 2px 3px 6px;
+    height:18px;
+    border-right:solid 1px #CCCCCC;
+    border-bottom:solid 1px #CCCCCC;
+}
+
+.ScrollBar
+{
+    clear:both;
+    width:100%;
+    overflow: auto;
+    border:solid 1px #9EB6CE;
+}
+
+
+
+
+.GridTable4
+{
+    clear:both;
+    width:1100px;
+}
+.GridTable4 th
+{
+    border-right:solid 1px #CCCCCC;
+    border-left:solid 1px #9EB6CE;
+    border-bottom:solid 1px #CCCCCC;
+    background-image:url(../images/grid-hrow.gif);
+    background-repeat:repeat-x;
+    height:21px;
+    line-height:21px;
+    padding:0px 3px 0px 3px;
+}
+
+.GridTable4 td
+{
+    padding:3px 2px 3px 6px;
+    height:18px;
+    border-right:solid 1px #CCCCCC;
+    border-bottom:solid 1px #CCCCCC;
+}
+.add {
+    background-image: url( ../images/add.gif ) !important;
+}
+.edit {
+    background-image: url( ../images/edit.gif ) !important;
+}
+.del {
+    background-image: url( ../images/delete.gif ) !important;
+}
+.view {
+    background-image: url( ../images/view.gif ) !important;
+}
+.audi {
+    background-image: url( ../images/WorkFlowExec.gif ) !important;
+}
+.export {
+    background-image: url( ../images/Export.gif ) !important;
+}
