@@ -1,5 +1,5 @@
 <?php
-include_once('dal/adminpagebase.php');
+include_once('DAL/AdminPageBase.php');
 ?>
 <!DOCTYPE html>
 <html>

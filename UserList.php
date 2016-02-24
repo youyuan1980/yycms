@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 15-4-25
- * Time: 下午1:40
- */
-include_once('dal/adminpagebase.php');
-include_once("dal/user.php");
+include_once('DAL/AdminPageBase.php');
+include_once("DAL/User.php");
 $u = new User($DB);
 $userlist = $u->GetUserList();
 ?>

@@ -14,7 +14,6 @@
             mysql_select_db($Config["DataBase"]);
             mysql_set_charset("utf8");
 
-
         } //结果
 		
 		//执行sql语句
@@ -35,7 +34,7 @@
 		public function GetDataTable($sql)
 		{
 			$data=array();
-			$this->Result=mysql_query($sql);
+			$this->Result=mysql_query($sql,$this->Link);
 			while($row=mysql_fetch_array($this->Result,MYSQL_ASSOC))
 			{
 				$data[]=$row;
