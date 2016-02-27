@@ -17,3 +17,4 @@ set collation_server = utf8_general_ci;
 
 alter table tablename convert to character set utf8;
 
+11
