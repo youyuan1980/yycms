@@ -1,11 +1,11 @@
 <?php
-include_once('dal/config.php');
-include_once('dal/user.php');
+include_once('DAL/Config.php');
+include_once('DAL/User.php');
 session_start();
-if (isset($_POST["txt_userid"]) && isset($_POST["txt_pwd"])) {
-    $UserID = $_POST["txt_userid"];
-    $UserPwd = $_POST["txt_pwd"];
-    $u=new User($DB);
+ if (isset($_POST["txt_userid"]) && isset($_POST["txt_pwd"])) {
+     $UserID = $_POST["txt_userid"];
+     $UserPwd = $_POST["txt_pwd"];
+     $u=new User($DB);
     $flag = $u->Login($UserID, $UserPwd);
     if ($flag == 1) {
         $_SESSION["userid"] =$UserID;
@@ -18,7 +18,14 @@ if (isset($_POST["txt_userid"]) && isset($_POST["txt_pwd"])) {
             echo "<script>alert('登陆失败:用户名错识');location.href='login.php'</script>";
         }
     }
-}
+ }
+ if (isset($_GET["action"])) {
+     $action = $_GET["action"];
+     if ($action=="logout") {
+         unset($_SESSION["userid"]);         
+         unset($_SESSION["username"]);
+     }
+ }
 ?>
 <html>
 <head><title>水云间后台管理系统</title>

@@ -25,8 +25,8 @@ include_once('DAL/AdminPageBase.php');
 <form id="form1">
     <div id="north">
         <div id="top">
-            <img src="images/top.jpg" align="left"/>
-            <?php echo $_SESSION["username"]; ?>&nbsp;<a href="login.aspx?action=logout" target="_top">退出系统</a><span
+            <img src="images/top.jpg" align="left" width='90%' height='200'/>
+            <?php echo $_SESSION["username"]; ?>&nbsp;<a href="login.php?action=logout" target="_top">退出系统</a><span
                 style="margin-right: 30px;"></span></div>
     </div>
     <div id="west">
