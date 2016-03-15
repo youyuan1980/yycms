@@ -59,9 +59,13 @@
             return $this->Db->Execute($sql);
         }
 		
-		public function GetUserList()
+		public function GetUserList($username,$pageindex,$pagesize)
         {
             $sql="select userid,username from users ";
+            if ($username!='') {
+            	$sql=$sql."where userid like '%".$username."%' or username like '%".$username."%'";
+            }
+            $sql = $sql.' limit '.$pageindex*$pagesize.','.$pagesize;
             return $this->Db->GetDataTable($sql);
         }
 		
