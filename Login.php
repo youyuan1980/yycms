@@ -28,7 +28,7 @@ session_start();
  }
 ?>
 <html>
-<head><title>水云间后台管理系统</title>
+<head><title></title>
     <meta charset="utf-8"/>
 </head>
 <body>

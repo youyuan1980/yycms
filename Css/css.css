@@ -95,6 +95,7 @@ a:active {
     clear:both;
     width:100%;    
     border:solid 1px #9EB6CE;
+    border-collapse:collapse;
 }
 .GridTableRowOver
 {
@@ -134,7 +135,16 @@ a:active {
     font-weight:bold;
 }
 
+.pager
+{
+    clear:both;
+    width:100%;    
+}
 
+.pager td
+{
+    font-size: 9pt;
+}
 
 .Grid
 {

@@ -65,8 +65,13 @@
             if ($username!='') {
             	$sql=$sql."where userid like '%".$username."%' or username like '%".$username."%'";
             }
+            $rowcount=$this->Db->GetRowsCount($sql);
             $sql = $sql.' limit '.$pageindex*$pagesize.','.$pagesize;
-            return $this->Db->GetDataTable($sql);
+            $data=array(
+            	"rowcount"=>$rowcount,
+            	"items"=>$this->Db->GetDataTable($sql)
+            	);
+            return $data;
         }
 		
 		public function Lock()

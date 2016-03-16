@@ -16,28 +16,26 @@
         this.PageIndex = PageIndex;
         this.Show();
     };
-
-    this.GridRowClick = function (ID) {
-        $("#" + this.SelectID ).attr("value", "-1");
-        var checks = $("#" + this.TableId + " input[type = 'checkbox']");
-        for (var i = 0; i < checks.length; i++) {
-            if (checks[i].id == ID) {
-                checks[i].checked = true;
-                $("#" + this.SelectID ).attr("value", checks[i].id);
+    this.GridRowClick = function (obj,ID) {
+        $("#"+obj.id+"").addClass('GridTableRowOver');
+        $("#" + this.SelectID ).attr("value", ID);
+        if (this.IsShowCheckBox) {
+            var checks = $("#" + this.TableId + " input[type = 'checkbox']");
+            for (var i = 0; i < checks.length; i++) {
+                if (checks[i].id == ID) {
+                    checks[i].checked = true;
+                }
+                else {
+                    checks[i].checked = false;
+                }
             }
-            else {
-                checks[i].checked = false;
-            }
-        }
+        }        
     };
-
     this.Show = function () {
-
         var CaptionColumns = new Array();
         CaptionColumns = this.CaptionColumnString.split(',');
         var Columns = new Array();
         Columns = this.ColumnString.split(',');
-
         //读取值
         var pageIndex = this.PageIndex;
         var keyColumnName = this.KeyColumnName;
@@ -52,7 +50,7 @@
         //清除table内容并显示标题头
         $("#" + tableId ).html('');
         $("#" + pagerId ).html('');
-        var title = '<thead><tr>';
+        var title = '<tr>';
 
         if (isShowCheckBox) {
             title += '<th></th>';
@@ -60,7 +58,7 @@
         for (var i = 0; i < CaptionColumns.length; i++) {
             title += '<th>' + CaptionColumns[i] + '</th>';
         }
-        title += '</tr></thead>';
+        title += '</tr>';
         $("#" + tableId ).append(title);
         Url=Url + "&pagesize=" + pageSize + "&pageindex=" + pageIndex + "&time=" + new Date().getTime();
         //显示数据
@@ -77,16 +75,16 @@
                 }
                 var dataObj = eval("(" + text + ")");                
                 var row = "";
-                $.each(dataObj.item, function (idx, item) {
+                $.each(dataObj.items, function (idx, item) {
                     var bgcolor = '';
                     if (idx % 2 == 1) bgcolor = " style=\"background-color:#E8EDF3;\" ";
                     if (item[keyColumnName] != undefined) {
                         var row = '';
                         if (isShowCheckBox) {
-                            row += "<tr id=t" + item[keyColumnName] + " " + bgcolor + "   onclick=\"javascript:" + objectName + ".GridRowClick(" + item[keyColumnName] + ");\"><td width=\"20px\"><input id=\"" + item[keyColumnName] + "\" type=\"checkbox\"/></td>";
+                            row += "<tr id='t" + item[keyColumnName] + "' " + bgcolor + " onclick=\"javascript:" + objectName + ".GridRowClick(this,'" + item[keyColumnName] + "');\"><td width=\"20px\"><input id=\"" + item[keyColumnName] + "\" type=\"checkbox\"/></td>";
                         }
                         else {
-                            row += "<tr id=t" + item[keyColumnName] + " " + bgcolor + "   onclick=\"javascript:" + objectName + ".GridRowClick(" + item[keyColumnName] + ");\">";
+                            row += "<tr id='t" + item[keyColumnName] + "' " + bgcolor + "   onclick=\"javascript:" + objectName + ".GridRowClick(this,'" + item[keyColumnName] + "');\">";
                         }
                         for (var j = 0; j < Columns.length; j++) {
                             row += '<td>' + item[Columns[j]] + '</td>';
@@ -95,7 +93,6 @@
                         $("#" + tableId ).append(row);                       
                     }
                 });
-
                 //分页
                 if (isShowPager) {
                     var RowCount = dataObj.rowcount;
