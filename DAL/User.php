@@ -59,14 +59,14 @@
             return $this->Db->Execute($sql);
         }
 		
-		public function GetUserList($username,$pageindex,$pagesize)
+		public function GetUserList($username,$page,$pagesize)
         {
             $sql="select userid,username from users ";
             if ($username!='') {
             	$sql=$sql."where userid like '%".$username."%' or username like '%".$username."%'";
             }
             $rowcount=$this->Db->GetRowsCount($sql);
-            $sql = $sql.' limit '.$pageindex*$pagesize.','.$pagesize;
+            $sql = $sql.' limit '.($page-1)*$pagesize.','.$pagesize;
             $data=array(
             	"rowcount"=>$rowcount,
             	"items"=>$this->Db->GetDataTable($sql)

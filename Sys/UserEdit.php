@@ -9,7 +9,7 @@
         <div class="PageHeader">
             <div class="PageTitle">
                 <?php 
-                    if (isset($_GET["USER_ID"])) {
+                    if (isset($_GET["user_id"])) {
                         echo "编辑用户信息";
                     }
                     else{

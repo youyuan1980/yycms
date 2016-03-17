@@ -1,6 +1,7 @@
 <?php
-include_once('DAL/Config.php');
-include_once('DAL/User.php');
+header("Content-Type: text/html; charset=UTF-8");
+include_once('Dal/Config.php');
+include_once('Dal/User.php');
 session_start();
  if (isset($_POST["txt_userid"]) && isset($_POST["txt_pwd"])) {
      $UserID = $_POST["txt_userid"];
