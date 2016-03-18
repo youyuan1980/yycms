@@ -533,3 +533,29 @@ hr
 .export {
     background-image: url( ../images/Export.gif ) !important;
 }
+
+.ContentTable
+{
+    width:100%;
+    border:solid 1px #99BBE8;   
+    border-collapse:collapse;
+}
+.ContentTable th
+{
+    /*display:none;*/
+}
+.ContentTable td
+{
+    padding:3px;
+    border-right:solid 1px #D0D7E5;
+    border-bottom:solid 1px #D0D7E5;
+    font-size:9pt;
+    color:Black;
+}
+.ContentTable
+{
+    width:95%;
+    border:solid 1px #99BBE8;   
+    border-collapse:collapse;    
+    
+}

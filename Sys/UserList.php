@@ -16,6 +16,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../css/css.css"/>
     <script type="text/javascript" src="../script/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../script/Common.js"></script>
     <script type="text/javascript">        
         var ErrMsg = "请先选择所需操作的信息！";
         var DelConfirmMsg = "您确认要删除选择的信息吗？";
@@ -49,14 +50,10 @@
             <div class="PageTitle">用户管理 > 用户列表</div>
         </div>
         <div class="PageToolBar">
-            <img src="../Images/AddUser.gif">
-            <a href="useredit.php">添加用户</a>
-            <img src="../Images/EditUser.gif">
-            <a href="#" onclick="javascript:DoAction('UserEdit.php');">编辑用户</a>
-            <img src="../Images/DelUser.gif">
-            <a href="#" onclick="">删除用户</a>
-            <img src="../Images/ResetPwd.gif">
-            <a href="#" onclick="">重置密码</a>
+            <img src="../Images/AddUser.gif"><a href="useredit.php">添加用户</a>
+            <img src="../Images/EditUser.gif"><a href="#" onclick="javascript:DoAction('UserEdit.php');">编辑用户</a>
+            <img src="../Images/DelUser.gif"><a href="#" onclick="">删除用户</a>
+            <img src="../Images/ResetPwd.gif"><a href="#" onclick="">重置密码</a>
         </div>
         <div id="container">
             <div id="ContentPanel">
@@ -66,11 +63,11 @@
                 <img src="../images/search.gif" alt="#" onclick="search();" style=" cursor: hand; "/>
             </div>
             <div id="content">
-                <table border="0" class="GridTable">
+                <table border="0" id='userlist' class="GridTable">
                     <tr><th>用户ID</th><th>用户名</th></tr>
                     <?php 
                         foreach ($datalist as $row) {
-                            echo '<tr><td>'.$row["userid"].'</td><td>'.$row["username"].'</td></tr>';
+                            echo '<tr onclick="select(this,\'userlist\',\'userid\',\''.$row["userid"].'\');"><td>'.$row["userid"].'</td><td>'.$row["username"].'</td></tr>';
                         }
                      ?>
                 </table>

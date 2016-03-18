@@ -38,3 +38,14 @@ function back() {
     var url = GetRequest("source");
     location.href = url;
 }
+
+function select (obj,tableID,selectID,value) {
+    $("#"+tableID+" tbody tr").removeClass("GridTableRowSelected");
+    obj.className ="GridTableRowSelected";
+    $("#"+selectID).attr("value",value);
+}
+
+function test()
+{
+    alert('111');
+}
