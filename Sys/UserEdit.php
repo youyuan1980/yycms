@@ -10,10 +10,18 @@
     <link href="../Css/css.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../script/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="../script/Common.js"></script>
-
+    <script type="text/javascript">
+    function cl_Click () {
+         var action='add';
+         var userid=GetRequest("userid");
+         if (userid.length>0) {action='edit'};
+         $("#action").attr("value",action);
+         $("#form1").submit();
+    }
+    </script>
 </head>
 <body>
-    <form id="form1" method="get" action="UserEdit.php">
+    <form id="form1" method="get" action="UserSave.php">
         <div>
             <div class="PageHeader">
                 <div class="PageTitle">
@@ -21,8 +29,7 @@
                     if (!empty($userid)) {
                         echo "编辑用户信息";
                         $sql="select username,userid,userpassword from users where userid='".$userid."'";
-                        $u=$DB->
-                    GetDataTable($sql);
+                        $u=$DB->GetDataTable($sql);
                         foreach ($u as $row) {
                             $userid=$row["userid"];
                             $username=$row["username"];
@@ -34,13 +41,11 @@
                  ?>
                 </div>
             </div>
-            <div class="PageToolBar" id="PageToolBar" runat="server">
-                <img src="../Images/add.gif" />
-                <asp:LinkButton runat="server" ID="cl" 
-                onclick="cl_Click" >保存</asp:LinkButton>
+            <div class="PageToolBar" id="PageToolBar">
+                <img src="../Images/add.gif" /><a id="c1" href="#" onclick="cl_Click();">保存</a>                
             </div>
             <div id="container">
-                <div id="content">
+                <div id="content">                
                     <table style="width: 100%" cellspacing="0" border="0" align="left" class="ContentTable"
                     id="LoginInfo">
                         <tr>

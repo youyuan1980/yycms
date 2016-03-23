@@ -46,22 +46,23 @@
 </head>
 <body>
     <form action="UserList.php" id='form1' method="get">
+        <div>
         <div class="PageHeader">
             <div class="PageTitle">用户管理 > 用户列表</div>
         </div>
         <div class="PageToolBar">
-            <img src="../Images/AddUser.gif"><a href="useredit.php">添加用户</a>
-            <img src="../Images/EditUser.gif"><a href="#" onclick="javascript:DoAction('UserEdit.php');">编辑用户</a>
-            <img src="../Images/DelUser.gif"><a href="#" onclick="">删除用户</a>
+            <img src="../Images/add.gif"><a href="useredit.php">添加用户</a>
+            <img src="../Images/edit.gif"><a href="#" onclick="javascript:DoAction('UserEdit.php');">编辑用户</a>
+            <img src="../Images/delete.gif"><a href="#" onclick="">删除用户</a>
             <img src="../Images/ResetPwd.gif"><a href="#" onclick="">重置密码</a>
         </div>
-        <div id="container">
-            <div id="ContentPanel">
+        <div id="PageTitle">
                 用户ID或用户姓名：
                 <input type="text" value="<?php echo $username; ?>" name="TbUserID" width="83"/>
                 &nbsp;
                 <img src="../images/search.gif" alt="#" onclick="search();" style=" cursor: hand; "/>
             </div>
+        <div id="container">            
             <div id="content">
                 <table border="0" id='userlist' class="GridTable">
                     <tr><th>用户ID</th><th>用户名</th></tr>
@@ -75,6 +76,7 @@
                     echo PageView::getPageHtml($page, $rowcount,$pagesize,$url);
                     ?></div>
             <input type="hidden" id="userid" value="-1" />
+        </div>
         </div>
     </form>
 </body>
