@@ -60,7 +60,8 @@
                         <tr id="a1">
                             <td width="10%">用户名称</td>
                             <td>
-                                <input type="text" name="username" id="username" width="300" value='<?php echo $username;?>'/>
+                                <input type="text" name="username" id="username" width="300" value='<?php echo $username;?>
+                                '/>
                                 <asp:TextBox runat="server" ID="USERNAME" Width="300"></asp:TextBox>
                                 <asp:RequiredFieldValidator
                                 ID="RequiredFieldValidatorEx1" runat="server" ControlToValidate="USERNAME" Display="Dynamic"
