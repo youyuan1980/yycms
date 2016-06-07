@@ -115,7 +115,6 @@ a.menu_btn:hover {
 	padding-bottom:4px;
 	margin: 2px 8px;
 	border:solid 1px #E8E8E8;
-	height:100%;
 	font-size:9pt;
 }
 
@@ -217,26 +216,6 @@ a.menu_btn:hover {
 {
   float:left;
 }
-
-.PageTitle1
-{
-	color:#15428b;
-	font-size:9pt;
-}
-#PageTitle1
-{
-	line-height:23px;
-	padding-top:6px;
-	padding-left:8px;
-	padding-right:8px;
-	padding-bottom:4px;
-	margin: 2px 8px;
-	border:solid 1px #E8E8E8;
-	height:50px;
-	font-size:9pt;
-}
-
-
 
 .ContentTable1
 {

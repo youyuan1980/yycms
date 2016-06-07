@@ -10,34 +10,19 @@ function GridTable() {
     this.PageSize = 20;
     this.PageIndex = 1;
     this.PagerSize = 5;
-    this.ObjectName = "";
     this.SelectID = "";
-    this.IsNav = true;
-    this.DialId = "";
     this.IsShowCheckBox = true;
     this.Pager = function (PageIndex) {
         this.PageIndex = PageIndex;
         this.Show();
     };
     this.GridRowClick = function (ID) {
-        var Tab;
-        if (this.IsNav) {
-            Tab = navTab.getCurrentPanel();
-        }
-        else {
-            if (this.DialId == "") {
-                Tab = $.pdialog.getCurrent();
-            }
-            else {
-                Tab = $("body").data(this.DialId);
-            }
-        }
-        $("#" + this.SelectID + "", Tab).attr("value", "-1");
-        var checks = $("#" + this.TableId + " input[type = 'checkbox']", Tab);
+        $("#" + this.SelectID + "").attr("value", "-1");
+        var checks = $("#" + this.TableId + " input[type = 'checkbox']");
         for (var i = 0; i < checks.length; i++) {
             if (checks[i].id == ID) {
                 checks[i].checked = true;
-                $("#" + this.SelectID + "", Tab).attr("value", checks[i].id);
+                $("#" + this.SelectID + "").attr("value", checks[i].id);
             }
             else {
                 checks[i].checked = false;
@@ -45,23 +30,10 @@ function GridTable() {
         }
     }
     this.Show = function () {
-        var Tab;
-        if (this.IsNav) {
-            Tab = navTab.getCurrentPanel();
-        }
-        else {
-            if (this.DialId == "") {
-                Tab = $.pdialog.getCurrent();
-            }
-            else {
-                Tab = $("body").data(this.DialId);
-            }
-        }
         var CaptionColumns = new Array();
         CaptionColumns = this.CaptionColumnString.split(',');
         var Columns = new Array();
         Columns = this.ColumnString.split(',');
-
         //读取值
         var pageIndex = this.PageIndex;
         var keyColumnName = this.KeyColumnName;
@@ -74,8 +46,8 @@ function GridTable() {
         var Url = this.url;
         var isShowCheckBox = this.IsShowCheckBox;
         //清除table内容并显示标题头
-        $("#" + tableId + "", Tab).html('');
-        $("#" + pagerId + "", Tab).html('');
+        $("#" + tableId + "").html('');
+        $("#" + pagerId + "").html('');
         var title = '<thead><tr>';
 
         if (isShowCheckBox) {
@@ -85,7 +57,7 @@ function GridTable() {
             title += '<th>' + CaptionColumns[i] + '</th>';
         }
         title += '</tr></thead>';
-        $("#" + tableId + "", Tab).append(title);
+        $("#" + tableId + "").append(title);
 
         //显示数据
         $.ajax({
@@ -117,12 +89,11 @@ function GridTable() {
                             row += '<td>' + item[Columns[j]] + '</td>';
                         }
                         row += '</tr>';
-                        $("#" + tableId + "", Tab).append(row);
+                        $("#" + tableId + "").append(row);
                     }
                 });
 
-                $("#" + tableId + "", Tab).append("</tbody>");
-                $("#" + tableId + "", Tab).cssTable();
+                $("#" + tableId + "").append("</tbody>");
 
                 //分页
                 if (isShowPager) {
@@ -133,7 +104,7 @@ function GridTable() {
                     }
                     pagestr = "<tr><td  valign=\"bottom\" align=\"left\" nowrap=\"true\" style=\"width:40%;\">记录数：" + RowCount + "条<span style=\"margin-left:5px;\"></span>每页显示：" + pageSize + "条 ";
                     pagestr += "当前页：第" + pageIndex + "页<span style=\"margin-left:5px;\"></span>总页数：" + SizeCount + "页<span style=\"margin-left:60px;\"></span>";
-                    pagestr += "<a href=\"javascript:" + objectName + ".Pager(" + pageIndex + ");\" style=\"margin-right:5px;\">&lt;&lt;</a>";
+                    pagestr += "<a href=\"javascript:" + tableId + ".Pager(" + pageIndex + ");\" style=\"margin-right:5px;\">&lt;&lt;</a>";
 
                     if (pageIndex <= pagerSize) {
                         if (pageIndex + pagerSize > SizeCount) {
@@ -142,7 +113,7 @@ function GridTable() {
                                     pagestr += "<span style=\"margin-right:5px;font-weight:Bold;color:red;\">" + i + "</span>";
                                 }
                                 else {
-                                    pagestr += "<a href=\"javascript:" + objectName + ".Pager(" + i + ");\" style=\"margin-right:5px;\">" + i + "</a>";
+                                    pagestr += "<a href=\"javascript:" + tableId + ".Pager(" + i + ");\" style=\"margin-right:5px;\">" + i + "</a>";
                                 }
                             }
                         }
@@ -152,7 +123,7 @@ function GridTable() {
                                     pagestr += "<span style=\"margin-right:5px;font-weight:Bold;color:red;\">" + i + "</span>";
                                 }
                                 else {
-                                    pagestr += "<a href=\"javascript:" + objectName + ".Pager(" + i + ");\" style=\"margin-right:5px;\">" + i + "</a>";
+                                    pagestr += "<a href=\"javascript:" + tableId + ".Pager(" + i + ");\" style=\"margin-right:5px;\">" + i + "</a>";
                                 }
                             }
                         }
@@ -164,7 +135,7 @@ function GridTable() {
                                     pagestr += "<span style=\"margin-right:5px;font-weight:Bold;color:red;\">" + i + "</span>";
                                 }
                                 else {
-                                    pagestr += "<a href=\"javascript:" + objectName + ".Pager(" + i + ");\" style=\"margin-right:5px;\">" + i + "</a>";
+                                    pagestr += "<a href=\"javascript:" + tableId + ".Pager(" + i + ");\" style=\"margin-right:5px;\">" + i + "</a>";
                                 }
                             }
                         }
@@ -174,41 +145,41 @@ function GridTable() {
                                     pagestr += "<span style=\"margin-right:5px;font-weight:Bold;color:red;\">" + i + "</span>";
                                 }
                                 else {
-                                    pagestr += "<a href=\"javascript:" + objectName + ".Pager(" + i + ");\" style=\"margin-right:5px;\">" + i + "</a>";
+                                    pagestr += "<a href=\"javascript:" + tableId + ".Pager(" + i + ");\" style=\"margin-right:5px;\">" + i + "</a>";
                                 }
                             }
                         }
                     }
-                    pagestr += "<a href=\"javascript:" + objectName + ".Pager(" + SizeCount + ");\" style=\"margin-right:5px;\">&gt;&gt;</a>";
+                    pagestr += "<a href=\"javascript:" + tableId + ".Pager(" + SizeCount + ");\" style=\"margin-right:5px;\">&gt;&gt;</a>";
                     pagestr += "</td></tr>";
-                    $("#" + pagerId + "", Tab).append(pagestr);
+                    $("#" + pagerId + "").append(pagestr);
                 }
             }
         });
     }
 }
 
-//显示表格配置
-var gridtable_chrsqlist = new GridTable();
-//查询按钮
-function chrsq_search() {
-    var Tab = navTab.getCurrentPanel();
-    var ObjectTypeId = $("#ObjectTypeId",Tab).attr("value");
-    if (ObjectTypeId == "-1") {
-        alertMsg.warn('请选择收费对象类型');
-        return false;
-    }
-    //显示
-    gridtable_chrsqlist.KeyColumnName = "OBJECTID";
-    gridtable_chrsqlist.CaptionColumnString = "收费对象名称,收费对象编码,收费总金额(元)";
-    gridtable_chrsqlist.ColumnString = "OBJECTNAME,KEYCODE,CHRVALUE";
-    gridtable_chrsqlist.IsShowPager = true;
-    gridtable_chrsqlist.TableId = "ChrObjectTable";
-    gridtable_chrsqlist.PagerId = "pager_chrsqlist";
-    gridtable_chrsqlist.PageSize = 20;
-    gridtable_chrsqlist.ObjectName = "gridtable_chrsqlist";
-    gridtable_chrsqlist.SelectID = "ObjectId_chrsqlist";
-    gridtable_chrsqlist.url = chrsq_url + "?action=loadchrobjectlist&ObjectTypeId=" + $("#ObjectTypeId", Tab).attr("value") + "&OBJECTNAME=" + URLencode($("#s_ObjectName", Tab).attr("value")) + "&KEYCODE=" + URLencode($("#s_KeyCode", Tab).attr("value"));
-    gridtable_chrsqlist.PageIndex = 1;
-    gridtable_chrsqlist.Show();
-}
+// //显示表格配置
+// var gridtable_chrsqlist = new GridTable();
+// //查询按钮
+// function chrsq_search() {
+//     var Tab = navTab.getCurrentPanel();
+//     var ObjectTypeId = $("#ObjectTypeId",Tab).attr("value");
+//     if (ObjectTypeId == "-1") {
+//         alertMsg.warn('请选择收费对象类型');
+//         return false;
+//     }
+//     //显示
+//     gridtable_chrsqlist.KeyColumnName = "OBJECTID";
+//     gridtable_chrsqlist.CaptionColumnString = "收费对象名称,收费对象编码,收费总金额(元)";
+//     gridtable_chrsqlist.ColumnString = "OBJECTNAME,KEYCODE,CHRVALUE";
+//     gridtable_chrsqlist.IsShowPager = true;
+//     gridtable_chrsqlist.TableId = "ChrObjectTable";
+//     gridtable_chrsqlist.PagerId = "pager_chrsqlist";
+//     gridtable_chrsqlist.PageSize = 20;
+//     gridtable_chrsqlist.ObjectName = "gridtable_chrsqlist";
+//     gridtable_chrsqlist.SelectID = "ObjectId_chrsqlist";
+//     gridtable_chrsqlist.url = chrsq_url + "?action=loadchrobjectlist&ObjectTypeId=" + $("#ObjectTypeId", Tab).attr("value") + "&OBJECTNAME=" + URLencode($("#s_ObjectName", Tab).attr("value")) + "&KEYCODE=" + URLencode($("#s_KeyCode", Tab).attr("value"));
+//     gridtable_chrsqlist.PageIndex = 1;
+//     gridtable_chrsqlist.Show();
+// }

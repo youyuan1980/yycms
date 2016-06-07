@@ -28,7 +28,7 @@ include_once('Dal/AdminPageBase1.php');
     </iframe>
     <div id="south">
         <p style="text-align: center; padding-top: 15px;">
-            <!-- 版权所有： © 2015 水云间工作室 CopyRight All Rights Reserved. 技术支持：水云间工作室 --></p>
+            版权所有： © 2015 水云间工作室 CopyRight All Rights Reserved. 技术支持：水云间工作室</p>
     </div>
 </form>
 </body>
