@@ -21,6 +21,7 @@
     <script type="text/javascript"> 
     var userlist = new GridTable();
     $(document).ready(function() {
+        //$("#userlist").css("background","red");
         search();
     });       
 
@@ -29,13 +30,15 @@
             userlist.KeyColumnName = "userid";
             userlist.CaptionColumnString = "用户ID,用户姓名";
             userlist.ColumnString = "userid,username";
-            userlist.IsShowPager = true;
             userlist.TableId = "userlist";
             userlist.PagerId = "pager";
             userlist.PageSize = 10;
-            userlist.SelectID = "userid";
+            userlist.ObjectName='userlist';
             userlist.url = "../Dal/userajax.php?action=list&UserName="+escape($("#TbUserID").attr("value"));
             userlist.PageIndex = 1;
+            userlist.IsShowPager=true;
+            userlist.CaptionColumnString_Custom="操作";
+            userlist.ColumnString_Custom="<a href=\"useredit.php?userid={userid}\">编辑</a>&nbsp;";
             userlist.Show();
     }
         // var ErrMsg = "请先选择所需操作的信息！";
@@ -110,9 +113,9 @@
                 <table border="0" id='userlist' class="GridTable">
                 </table>
                 <table id="pager"></table>
-            <input type="hidden" id="userid" value="-1" />
         </div>
         </div>
+        <p>adfsafdsf</p>
     </form>
 </body>
 </html>
