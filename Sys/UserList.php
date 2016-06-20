@@ -97,7 +97,7 @@
             <div class="PageTitle">用户管理 > 用户列表</div>
         </div>
         <div class="PageToolBar">
-            <img src="../Images/add.gif"><a href="useredit.php">添加用户</a>
+            <img src="../Images/add.gif"><a href="useredit.php">添加用户111</a>
             <img src="../Images/edit.gif"><a href="#" onclick="javascript:DoAction('UserEdit.php');">编辑用户</a>
             <img src="../Images/delete.gif"><a href="#" onclick="">删除用户</a>
             <img src="../Images/ResetPwd.gif"><a href="#" onclick="">重置密码</a>

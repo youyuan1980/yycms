@@ -21,7 +21,7 @@ function GridTable() {
     	$("#"+ obj.id ).css("background","#E8EDF3");
     }
 
-    this.Show = function () {
+    this.Show = function () {        
         var CaptionColumns = new Array();
         CaptionColumns = this.CaptionColumnString.split(',');
         var Columns = new Array();
