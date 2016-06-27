@@ -76,9 +76,16 @@ function GridTable() {
                             row += '<td>' + item[Columns[j]] + '</td>';
                         }
                         /*增加自定义列*/
+                        pattern =new RegExp("\\{(.| )+?\\}","igm");
                         for (var j = 0; j < Column_Customs.length; j++) {
-                        	console.log(item);
-                            row += '<td>' + Column_Customs[j]+ '</td>';
+                            var columnstr=Column_Customs[j];                            
+                            var arr=columnstr.match(pattern);
+                            for(var x=0;x<arr.length;x++)
+                            {
+                                var cdata=arr[x].substring(1,arr[x].length-1);
+                                columnstr=columnstr.replace(arr[x],item[cdata]);
+                            }
+                            row += '<td>' + columnstr+ '</td>';
                         }
 
                         row += '</tr>';
