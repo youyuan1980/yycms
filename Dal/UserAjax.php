@@ -14,6 +14,14 @@
 				$data=$u->GetUserList($username,$page,$pagesize);
 				echo json_encode($data);
 				break;
+			case "del":
+				$userid=isset($_REQUEST["userid"])?$_REQUEST["userid"]:'';
+				$u->DelUser($userid);
+				break;
+			case "restpassword":
+				$userid=isset($_REQUEST["userid"])?$_REQUEST["userid"]:'';
+				$u->RestPassowrd($userid);
+				break;
     		default:break;
    		}
 	}

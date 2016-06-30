@@ -58,6 +58,13 @@
             $sql="delete from users where userid='".$UserID."'";
             return $this->Db->Execute($sql);
         }
+
+        public function RestPassowrd($UserID)
+        {
+        	$pwd=md5('123');
+        	$sql="update users set USERPASSWORD='".$pwd."' where userid='".$UserID."'";
+        	return $this->Db->Execute($sql);
+        }
 		
 		public function GetUserList($username,$page,$pagesize)
         {
