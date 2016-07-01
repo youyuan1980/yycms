@@ -47,10 +47,37 @@
 		}
 
         //添加用户
-		public function AddUser($UserID,$UserPwd,$UserName,$UserRoles)
+		public function AddUser($UserID,$UserName,$UserRoles)
 		{
-            $sql="insert into users(userid,userpwd,username) values()";
-            return $this->Db->Execute($sql);
+            $isBad="0";
+            $pwd=md5('123');         
+            $this->Db->Execute('START TRANSACTION');                   
+            $sql="delete from userinrole where userid='".$UserID."'";
+            if(!$this->Db->Execute($sql))
+            {
+                $isBad="1";
+            }
+            foreach ($UserRoles as $value) {
+                $sql="insert into userinrole values('".$UserID."','".$value."')";
+                if(!$this->Db->Execute($sql))
+                {
+                    $isBad="1";
+                }
+            }
+            $sql="insert into users(userid,userpassword,username) values('".$UserID."','".$pwd."','".$UserName."')";
+            if(!$this->Db->Execute($sql))
+            {
+                $isBad="1";                
+            }
+            if($isBad=="1")
+            {
+                $this->Db->Execute('ROLLBACK ');  
+            }
+            else
+            {
+                $this->Db->Execute('COMMIT');                              
+            }
+            return $isBad;
         }
 		
 		public function DelUser($UserID)

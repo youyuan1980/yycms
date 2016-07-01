@@ -1,8 +1,8 @@
-﻿<?php 
+<?php 
     include_once('../Dal/AdminPageBase.php');
     $userid=isset($_GET["userid"])?$_GET["userid"]:"";
     $username=isset($_GET["username"])?$_GET["username"]:"";
- ?>
+?>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
     </script>
 </head>
 <body>
-    <form id="form1" method="get" action="UserSave.php">
+    <form id="form1" method="post" action="UserSave.php">
         <div>
             <div class="PageHeader">
                 <div class="PageTitle">
@@ -29,7 +29,8 @@
                     if (!empty($userid)) {
                         echo "编辑用户信息";
                         $sql="select username,userid,userpassword from users where userid='".$userid."'";
-                        $u=$DB->GetDataTable($sql);
+                        $u=$DB->
+                    GetDataTable($sql);
                         foreach ($u as $row) {
                             $userid=$row["userid"];
                             $username=$row["username"];
@@ -42,10 +43,11 @@
                 </div>
             </div>
             <div class="PageToolBar" id="PageToolBar">
-                <img src="../Images/add.gif" /><a id="c1" href="#" onclick="cl_Click();">保存</a>                
+                <img src="../Images/add.gif" />
+                <a id="c1" href="#" onclick="cl_Click();">保存</a>
             </div>
             <div id="container">
-                <div id="content">                
+                <div id="content">
                     <table style="width: 100%" cellspacing="0" border="0" align="left" class="ContentTable"
                     id="LoginInfo">
                         <tr>
@@ -66,19 +68,18 @@
                                 ID="RequiredFieldValidatorEx1" runat="server" ControlToValidate="USERNAME" Display="Dynamic"
                                 ErrorMessage="请输入用户名称"></asp:RequiredFieldValidator>
                             </td>
-                        </tr>                       
+                        </tr>
                         <tr>
                             <td>权限</td>
                             <td>
                                 <?php 
-                                $roles=$DB->
-                                GetDataTable("select roleid,rolename from roles");
-                                foreach ($roles as $role) {
-                                    echo "
-                                <input type=\"checkbox\" value=\"".$role["roleid"]."\" id=\"chkroles\" name=\"chkroles\"    />
-                                ".$role["rolename"]."
-                                <br>
-                                ";
+                                    $roles=$DB->GetDataTable("select roleid,rolename from roles");
+                                    foreach ($roles as $role) {
+                                        echo "
+                                    <input type=\"checkbox\" value=\"".$role["roleid"]."\" id=\"chkroles\" name=\"chkroles[]\"    />
+                                    ".$role["rolename"]."
+                                    <br>
+                                    ";
                                 }
                              ?>
                             </td>
