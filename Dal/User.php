@@ -79,6 +79,40 @@
             }
             return $isBad;
         }
+
+        //添加用户
+        public function EditUser($UserID,$UserName,$UserRoles)
+        {
+            $isBad="0";
+            $pwd=md5('123');         
+            $this->Db->Execute('START TRANSACTION');                   
+            $sql="delete from userinrole where userid='".$UserID."'";
+            if(!$this->Db->Execute($sql))
+            {
+                $isBad="1";
+            }
+            foreach ($UserRoles as $value) {
+                $sql="insert into userinrole values('".$UserID."','".$value."')";
+                if(!$this->Db->Execute($sql))
+                {
+                    $isBad="1";
+                }
+            }
+            $sql="update users set username='".$UserName."' where userid='".$UserID."'";
+            if(!$this->Db->Execute($sql))
+            {
+                $isBad="1";                
+            }
+            if($isBad=="1")
+            {
+                $this->Db->Execute('ROLLBACK ');  
+            }
+            else
+            {
+                $this->Db->Execute('COMMIT');                              
+            }
+            return $isBad;
+        }
 		
 		public function DelUser($UserID)
         {

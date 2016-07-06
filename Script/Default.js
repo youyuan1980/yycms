@@ -6,9 +6,9 @@ var setting = {
     }
 };
 
-// $(document).ready(function () {
-//     //$.fn.zTree.init($("#treeDemo"), setting, zNodes);
-// });
+$(document).ready(function () {
+    $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+});
 
 Ext.onReady(function () {
     Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
