@@ -3,7 +3,7 @@
     $UserID= $_SESSION["userid"];
     $json="[";
     $sql = "select id,name,pid,isparent,url from menu t ".
-    " where roleid is null or roleid in (select roleid from userinrole where userid='" .$UserID."')  order by menuorder ";
+    " where roleid ='' or roleid in (select roleid from userinrole where userid='" .$UserID."')  order by menuorder ";
     $dt = $DB->GetDataTable($sql);
     foreach ($dt as $row) {
         if ($json!="[") {
@@ -51,7 +51,7 @@
             <?php echo $_SESSION["username"]; ?>&nbsp;<a href="login.php?action=logout" target="_top">退出系统</a><span
                 style="margin-right: 30px;"></span></div>
     </div>
-    <iframe height="100%" width="100%" src="sys/userlist.php" name="main" frameborder="no" id="main" border="0">
+    <iframe height="100%" width="100%" src="main.php" name="main" frameborder="no" id="main" border="0">
     </iframe>
     <div id="south">
         <p style="text-align: center; padding-top: 15px;">

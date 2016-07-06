@@ -21,11 +21,18 @@
     </script>
     <script type="text/javascript">
     function cl_Click () {
-         var action='add';
-         var userid=GetRequest("userid");
-         if (userid.length>0) {action='edit'};
-         $("#action").attr("value",action);
-         $("#form1").submit();
+        var tuserid=$("#userid").attr("value");
+        var tusername=$("#username").attr("value");
+        if (tuserid==""||tusername=="")
+        {
+            alert('请输入用户ID和用户名称');
+            return false;
+        };
+        var action='add';
+        var userid=GetRequest("userid");
+        if (userid.length>0) {action='edit'};
+        $("#action").attr("value",action);
+        $("#form1").submit();
     }
     </script>
 </head>
@@ -62,18 +69,12 @@
                             <td width="10%">用户ID</td>
                             <td>
                                 <input type="text" name="userid" id="userid" width="300" value='<?php echo $userid;?>' />
-                                <asp:RequiredFieldValidator
-                                ID="RequiredFieldValidatorEx4" runat="server" ControlToValidate="USERID" Display="Dynamic"
-                                ErrorMessage="请输入用户ID"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr id="a1">
                             <td width="10%">用户名称</td>
                             <td>
                                 <input type="text" name="username" id="username" width="300" value='<?php echo $username;?>' />
-                                <asp:RequiredFieldValidator
-                                ID="RequiredFieldValidatorEx1" runat="server" ControlToValidate="USERNAME" Display="Dynamic"
-                                ErrorMessage="请输入用户名称"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>

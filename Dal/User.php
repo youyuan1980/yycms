@@ -50,32 +50,34 @@
 		public function AddUser($UserID,$UserName,$UserRoles)
 		{
             $isBad="0";
-            $pwd=md5('123');         
-            $this->Db->Execute('START TRANSACTION');                   
+            $pwd=md5('123');
+            $this->Db->Execute('START TRANSACTION');
             $sql="delete from userinrole where userid='".$UserID."'";
             if(!$this->Db->Execute($sql))
             {
                 $isBad="1";
             }
-            foreach ($UserRoles as $value) {
-                $sql="insert into userinrole values('".$UserID."','".$value."')";
-                if(!$this->Db->Execute($sql))
-                {
-                    $isBad="1";
+            if (is_array($UserRoles)) {
+                foreach ($UserRoles as $value) {
+                    $sql="insert into userinrole values('".$UserID."','".$value."')";
+                    if(!$this->Db->Execute($sql))
+                    {
+                        $isBad="1";
+                    }
                 }
             }
             $sql="insert into users(userid,userpassword,username) values('".$UserID."','".$pwd."','".$UserName."')";
             if(!$this->Db->Execute($sql))
             {
-                $isBad="1";                
+                $isBad="1";
             }
             if($isBad=="1")
             {
-                $this->Db->Execute('ROLLBACK ');  
+                $this->Db->Execute('ROLLBACK ');
             }
             else
             {
-                $this->Db->Execute('COMMIT');                              
+                $this->Db->Execute('COMMIT');
             }
             return $isBad;
         }
@@ -84,8 +86,8 @@
         public function EditUser($UserID,$UserName,$UserRoles)
         {
             $isBad="0";
-            $pwd=md5('123');         
-            $this->Db->Execute('START TRANSACTION');                   
+            $pwd=md5('123');
+            $this->Db->Execute('START TRANSACTION');
             $sql="delete from userinrole where userid='".$UserID."'";
             if(!$this->Db->Execute($sql))
             {
@@ -101,19 +103,19 @@
             $sql="update users set username='".$UserName."' where userid='".$UserID."'";
             if(!$this->Db->Execute($sql))
             {
-                $isBad="1";                
+                $isBad="1";
             }
             if($isBad=="1")
             {
-                $this->Db->Execute('ROLLBACK ');  
+                $this->Db->Execute('ROLLBACK ');
             }
             else
             {
-                $this->Db->Execute('COMMIT');                              
+                $this->Db->Execute('COMMIT');
             }
             return $isBad;
         }
-		
+
 		public function DelUser($UserID)
         {
             $sql="delete from users where userid='".$UserID."'";
@@ -126,7 +128,7 @@
         	$sql="update users set USERPASSWORD='".$pwd."' where userid='".$UserID."'";
         	return $this->Db->Execute($sql);
         }
-		
+
 		public function GetUserList($username,$page,$pagesize)
         {
             $sql="select userid,username from users ";
@@ -141,18 +143,18 @@
             	);
             return $data;
         }
-		
+
 		public function Lock()
 		{
 
 		}
-		
+
 		public function IsChecked($UserID)
         {
             $sql="select count(*) from users where userid='".$UserID."'";
             return $this->Db->GetRowsCount($sql);
         }
-		
+
 		public function UpdUser()
         {
 
