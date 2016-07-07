@@ -1,4 +1,4 @@
-<?php 
+<?php
     include_once('../Dal/AdminPageBase.php');
 ?>
 <html>
@@ -9,11 +9,11 @@
     <script type="text/javascript" src="../script/Common.js"></script>
     <script src="../script/gridtable.js" type="text/javascript" ></script>
     <script src="../script/user.js" type="text/javascript"></script>
-    <script type="text/javascript"> 
+    <script type="text/javascript">
         var userlist = new GridTable();
         $(document).ready(function() {
             search();
-        }); 
+        });
     </script>
 </head>
 <body>
@@ -24,15 +24,14 @@
             </div>
             <div class="PageToolBar">
                 <img src="../Images/add.gif"><a href="useredit.php">添加用户</a>
-                <img src="../Images/ResetPwd.gif"><a href="#" onclick="">重置密码</a>
             </div>
             <div id="PageTitle">
                     用户ID或用户姓名：
-                  <input type="text" value="" id="TbUserID" width="83"/> 
+                  <input type="text" value="" id="TbUserID" width="83"/>
                     &nbsp;
                     <img src="../images/search.gif" alt="#" onclick="search();" style=" cursor: hand; "/>
                 </div>
-            <div id="container">            
+            <div id="container">
                 <div id="content">
                     <table border="0" id='userlist' class="GridTable">
                     </table>

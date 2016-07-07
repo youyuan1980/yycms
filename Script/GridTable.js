@@ -21,7 +21,7 @@ function GridTable() {
     	$("#"+ obj.id ).css("background","#E8EDF3");
     }
 
-    this.Show = function () {        
+    this.Show = function () {
         var CaptionColumns = new Array();
         CaptionColumns = this.CaptionColumnString.split(',');
         var Columns = new Array();
@@ -78,7 +78,7 @@ function GridTable() {
                         /*增加自定义列*/
                         pattern =new RegExp("\\{(.| )+?\\}","igm");
                         for (var j = 0; j < Column_Customs.length; j++) {
-                            var columnstr=Column_Customs[j];                            
+                            var columnstr=Column_Customs[j];
                             var arr=columnstr.match(pattern);
                             for(var x=0;x<arr.length;x++)
                             {
