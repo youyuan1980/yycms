@@ -93,11 +93,13 @@
             {
                 $isBad="1";
             }
-            foreach ($UserRoles as $value) {
-                $sql="insert into userinrole values('".$UserID."','".$value."')";
-                if(!$this->Db->Execute($sql))
-                {
-                    $isBad="1";
+            if (is_array($UserRoles)) {
+                foreach ($UserRoles as $value) {
+                    $sql="insert into userinrole values('".$UserID."','".$value."')";
+                    if(!$this->Db->Execute($sql))
+                    {
+                        $isBad="1";
+                    }
                 }
             }
             $sql="update users set username='".$UserName."' where userid='".$UserID."'";

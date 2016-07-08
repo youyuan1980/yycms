@@ -3,7 +3,7 @@
     include_once('../Dal/ArticleClass.php');
     $articleclass=new ArticleClass($DB);
     $pid=isset($_GET["pid"])?$_GET["pid"]:"-1";
-    $classid=isset($_GET["classid"])?$_GET["classid"]:"-1";
+    $classid=isset($_GET["classid"])?$_GET["classid"]:"";
 ?>
 <html>
 <head>
@@ -14,18 +14,19 @@
     <script type="text/javascript" src="../script/Common.js"></script>
     <script type="text/javascript">
     function cl_Click () {
-        // var tuserid=$("#userid").attr("value");
-        // var tusername=$("#username").attr("value");
-        // if (tuserid==""||tusername=="")
-        // {
-        //     alert('请输入用户ID和用户名称');
-        //     return false;
-        // };
-        // var action='add';
-        // var userid=GetRequest("userid");
-        // if (userid.length>0) {action='edit'};
-        // $("#action").attr("value",action);
-        // $("#form1").submit();
+        var pid=$("#pid").attr("value");
+        var classid=$("#classid").attr("value");
+        var title=$("#title").attr("value");
+        if (title=="")
+        {
+            alert('请输入栏目名称');
+            return false;
+        };
+        var action='add';
+        var classid=GetRequest("classid");
+        if (classid!="") {action='edit'};
+        $("#action").attr("value",action);
+        $("#form1").submit();
     }
     </script>
 </head>
@@ -54,13 +55,21 @@
                         <tr>
                             <td width="10%">父栏目</td>
                             <td>
-                                <?php echo $articleclass->GetChildArticleClassList($pid); ?>
+                                <?php
+                                    $parenttitle=$articleclass->GetArticleClassInfo($pid);
+                                    echo $parenttitle["title"];
+                                ?>
                             </td>
                         </tr>
                         <tr id="a1">
                             <td width="10%">栏目名称</td>
                             <td>
-                                <!-- <input type="text" name="username" id="username" width="300" value='<?php echo $username;?>' /> -->
+                                <input type="text" name="title" id="title" width="300" value='<?php
+                                    if ($classid!="") {
+                                        $parenttitle=$articleclass->GetArticleClassInfo($classid);
+                                        echo $parenttitle["title"];
+                                    }
+                                ?>' />
                             </td>
                         </tr>
                     </table>
@@ -68,6 +77,8 @@
             </div>
         </div>
         <input type="hidden" id="action" name="action" />
+        <input type="hidden" id="classid" name="classid" value="<?php echo $classid; ?>" />
+        <input type="hidden" id="pid" name="pid" value="<?php echo $pid; ?>"/>
     </form>
 </body>
 </html>

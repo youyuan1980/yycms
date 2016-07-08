@@ -5,14 +5,27 @@ function GetRequest(s) {
         return "";
     }
     if (url.indexOf("?") != -1) {
-        var str = url.substr(1)     //去掉?号   
+        var str = url.substr(1)     //去掉?号
         var Request = new Object();
         strs = str.split("&");
         for (var i = 0; i < strs.length; i++) {
             Request[strs[i].split("=")[0].toUpperCase()] = unescape(strs[i].split("=")[1]);
         }
     }
-    return Request[s.toUpperCase()];
+    return GetObjProperty(Request,s.toUpperCase());
+}
+
+function GetObjProperty(Obj,requestId)
+{
+    var value='';
+    var PropertyCount=0;
+    for(i in Obj){
+        if(Obj.i ==null)
+        {
+            if (requestId.toUpperCase()==i) {value=Obj[requestId.toUpperCase()];break;}
+        }
+    }
+    return value;
 }
 
 function log(s) {

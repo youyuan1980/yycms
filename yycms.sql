@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2016-07-06 16:58:15
+Date: 2016-07-08 16:22:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -58,19 +58,19 @@ DROP TABLE IF EXISTS `article_classlist`;
 CREATE TABLE `article_classlist` (
   `ID` bigint(20) NOT NULL,
   `TITLE` varchar(200) NOT NULL,
-  `PARENT` bigint(20) NOT NULL default '0',
+  `PARENTID` bigint(20) NOT NULL default '0',
   `UPTIME` datetime NOT NULL,
-  `ORDERNUM` int(11) NOT NULL default '1',
-  `ISSHOW` char(1) NOT NULL default '1',
-  `ALLOWUSERS` varchar(100) default NULL,
   PRIMARY KEY  (`ID`),
-  KEY `ID` (`ID`),
-  KEY `ORDERNUM` (`ORDERNUM`)
+  KEY `ID` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of article_classlist
 -- ----------------------------
+INSERT INTO `article_classlist` VALUES ('1', '第一个目录111', '-1', '2016-07-08 16:20:57');
+INSERT INTO `article_classlist` VALUES ('146796377095', '232323', '-1', '2016-07-08 15:42:50');
+INSERT INTO `article_classlist` VALUES ('146796590795', '第二个子目录', '-1', '2016-07-08 16:18:27');
+INSERT INTO `article_classlist` VALUES ('146796594858', '第一一111个目录', '1', '2016-07-08 16:21:36');
 
 -- ----------------------------
 -- Table structure for `menu`
@@ -98,7 +98,6 @@ INSERT INTO `menu` VALUES ('11', '用户基本信息', '1', '0', 'main.php', '',
 INSERT INTO `menu` VALUES ('12', '修改密码', '1', '0', 'sys/UpdatePassWord.php', '', '30');
 INSERT INTO `menu` VALUES ('21', '添加信息', '2', '0', 'Tax/SqEdit.aspx', 'reporter', '50');
 INSERT INTO `menu` VALUES ('22', '信息列表', '2', '0', 'Tax/Sqlist.aspx', 'reporter', '60');
-INSERT INTO `menu` VALUES ('31', '添加栏目', '3', '0', 'articleclass/articleclass_edit.php', 'reporter', '80');
 INSERT INTO `menu` VALUES ('32', '栏目列表', '3', '0', 'articleclass/articleclass_list.php', 'reporter', '90');
 INSERT INTO `menu` VALUES ('41', '用户列表', '4', '0', 'sys/userlist.php', 'admin', '114');
 
@@ -148,11 +147,14 @@ CREATE TABLE `userinrole` (
 -- ----------------------------
 -- Records of userinrole
 -- ----------------------------
+INSERT INTO `userinrole` VALUES ('1', 'audi');
 INSERT INTO `userinrole` VALUES ('232323', 'admin');
 INSERT INTO `userinrole` VALUES ('232323', 'reporter');
 INSERT INTO `userinrole` VALUES ('345', 'admin');
 INSERT INTO `userinrole` VALUES ('345', 'audi');
 INSERT INTO `userinrole` VALUES ('345', 'reporter');
+INSERT INTO `userinrole` VALUES ('5', 'admin');
+INSERT INTO `userinrole` VALUES ('5', 'reporter');
 INSERT INTO `userinrole` VALUES ('5454', 'admin');
 INSERT INTO `userinrole` VALUES ('5454', 'reporter');
 INSERT INTO `userinrole` VALUES ('767878', 'admin');
@@ -179,6 +181,12 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
+INSERT INTO `users` VALUES ('1', '2', '202cb962ac59075b964b07152d234b70', null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', null, null);
+INSERT INTO `users` VALUES ('2', '2', '202cb962ac59075b964b07152d234b70', null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', null, null);
+INSERT INTO `users` VALUES ('2323', '232323', '202cb962ac59075b964b07152d234b70', null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', null, null);
 INSERT INTO `users` VALUES ('232323', '23232', '202cb962ac59075b964b07152d234b70', null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', null, null);
+INSERT INTO `users` VALUES ('3', '3', '202cb962ac59075b964b07152d234b70', null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', null, null);
+INSERT INTO `users` VALUES ('332333333331', '434343', '202cb962ac59075b964b07152d234b70', null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', null, null);
+INSERT INTO `users` VALUES ('5', '5', '202cb962ac59075b964b07152d234b70', null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', null, null);
 INSERT INTO `users` VALUES ('767878', '78787', '202cb962ac59075b964b07152d234b70', null, null, '0000-00-00 00:00:00', '0000-00-00 00:00:00', null, null);
 INSERT INTO `users` VALUES ('admin', '超级管理员', '202cb962ac59075b964b07152d234b70', null, null, '2015-01-01 00:00:00', '2012-01-01 00:00:00', null, null);
