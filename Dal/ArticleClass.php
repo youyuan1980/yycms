@@ -36,9 +36,8 @@
 
         public function GetChildArticleClassList($ClassID)
         {
-        	$html="11";
         	$dt=$this->Db->GetDataTable("select id,title,parentid from article_classlist where parentid=".$ClassID);
-        	return $html;
+        	return $dt;
         }
 
         public function DelArticleClass($ClassID)
@@ -65,19 +64,21 @@
 
         public function GetArticleClassInfo($ClassID)
         {
-            $info=array('id' => "",'title'=>"" );
+            $info=array('id' => "",'title'=>"" ,'pid'=>'');
             if ($ClassID=="-1") {
                 $info["id"]="-1";
                 $info["title"]="根目录";
+                $info["pid"]="";
             }
             else
             {
-            	$sql="select id,title from article_classlist where  id=".$ClassID;
+            	$sql="select id,title,parentid from article_classlist where  id=".$ClassID;
             	$dt=$this->Db->GetDataTable($sql);
                 foreach ($dt as $row) {
                     # code...
                     $info["id"]=$row["id"];
                     $info["title"]=$row["title"];
+                    $info["pid"]=$row["parentid"];
                     break;
                 }
             }

@@ -31,7 +31,7 @@
                 <img src="../Images/add.gif"><a href="#" onclick="save();">添加栏目</a>
             </div>
             <div id="PageTitle">
-                    标题：
+                    栏目名称：
                   <input type="text" value="" id="TbTitle" width="83"/>
                     &nbsp;
                     <img src="../images/search.gif" alt="#" onclick="search();" style=" cursor: hand; "/>
