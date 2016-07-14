@@ -16,11 +16,11 @@
         $(document).ready(function() {
             search();
         });
-        // function save () {
-        //     var pid=GetRequest("pid");
-        //     if (pid=="") {pid="-1";}
-        //     location.href='articleclass_edit.php?pid='+pid;
-        // }
+        function add () {
+            var classid=GetRequest("classid");
+            if (classid=="") {pid="-1";}
+            location.href='ArticleEdit.php?classid='+classid;
+        }
     </script>
 </head>
 <body>
@@ -30,7 +30,7 @@
                 <div class="PageTitle">信息管理 > 信息列表</div>
             </div>
             <div class="PageToolBar">
-                <img src="../Images/add.gif"><a href="#" onclick="save();">添加信息</a>
+                <img src="../Images/add.gif"><a href="#" onclick="add();">添加信息</a>
             </div>
             <div id="PageTitle">
                   <?php

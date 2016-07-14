@@ -1,5 +1,7 @@
 <?php
     include_once('../Dal/AdminPageBase.php');
+    include_once('../Dal/ArticleClass.php');
+    $u=new ArticleClass($DB);
 ?>
 <html>
 <head>
@@ -14,7 +16,7 @@
         $(document).ready(function() {
             search();
         });
-        function save () {
+        function add () {
             var pid=GetRequest("pid");
             if (pid=="") {pid="-1";}
             location.href='articleclass_edit.php?pid='+pid;
@@ -28,9 +30,22 @@
                 <div class="PageTitle">栏目管理 > 栏目列表</div>
             </div>
             <div class="PageToolBar">
-                <img src="../Images/add.gif"><a href="#" onclick="save();">添加栏目</a>
+                <img src="../Images/add.gif"><a href="#" onclick="add();">添加栏目</a>
             </div>
             <div id="PageTitle">
+                <?php
+                    $pid=isset($_REQUEST["pid"])?$_REQUEST["pid"]:'';
+                    if ($pid==""||$pid=="-1") {
+                        # code...
+                        echo "上级目录：根目录";
+                    }
+                    else
+                    {
+                        $dt=$u->GetArticleClassInfo($pid);
+                        echo "返回上级目录："."<a href='articleclass_list.php?pid=".$dt["pid"]."'>".$dt["title"]."</a>&nbsp;&nbsp;";
+                    }
+                 ?>
+                <br>
                     栏目名称：
                   <input type="text" value="" id="TbTitle" width="83"/>
                     &nbsp;
