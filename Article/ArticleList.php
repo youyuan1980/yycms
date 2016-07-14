@@ -2,6 +2,37 @@
     include_once('../Dal/AdminPageBase.php');
     include_once('../Dal/articleclass.php');
     $u=new ArticleClass($DB);
+    $classid=isset($_REQUEST["classid"])?$_REQUEST["classid"]:'';
+    $curclasstitle='';
+    $childclassurl='';
+    $addclassid='';
+    if ($classid=="-1"||$classid=="") {
+        $dt=$u->GetChildArticleClassList("-1");
+        foreach ($dt as $row) {
+            # code...
+            $classid=$row["id"];
+            break;
+        }
+        $dt=$u->GetArticleClassInfo($classid);
+        $curclasstitle=$dt["title"]."(根目录)";
+        $addclassid=$dt["id"];
+        $dt1=$u->GetChildArticleClassList($dt["pid"]);
+        foreach ($dt1 as $row) {
+            $childclassurl=$childclassurl."<a href='articlelist.php?classid=".$row["id"]."'>".$row["title"]."</a>&nbsp;&nbsp;";
+        }
+    }
+    else
+    {
+        $dt=$u->GetArticleClassInfo($classid);
+        $curclasstitle=$dt["title"];
+        $addclassid=$dt["id"];
+        $childclassurl="<a href='articlelist.php?classid=".$dt["pid"]."'>上级目录</a>&nbsp;&nbsp;";
+        $dt1=$u->GetChildArticleClassList($classid);
+        foreach ($dt1 as $row) {
+            $childclassurl=$childclassurl."<a href='articlelist.php?classid=".$row["id"]."'>".$row["title"]."</a>&nbsp;&nbsp;";
+        }
+
+    }
 ?>
 <html>
 <head>
@@ -17,9 +48,7 @@
             search();
         });
         function add () {
-            var classid=GetRequest("classid");
-            if (classid=="") {pid="-1";}
-            location.href='ArticleEdit.php?classid='+classid;
+            location.href='ArticleEdit.php?classid='+<?php echo $addclassid; ?>;
         }
     </script>
 </head>
@@ -34,34 +63,6 @@
             </div>
             <div id="PageTitle">
                   <?php
-                    $classid=isset($_REQUEST["classid"])?$_REQUEST["classid"]:'';
-                    $curclasstitle='';
-                    $childclassurl='';
-                    if ($classid=="-1"||$classid=="") {
-                        $dt=$u->GetChildArticleClassList("-1");
-                        foreach ($dt as $row) {
-                            # code...
-                            $classid=$row["id"];
-                            break;
-                        }
-                        $dt=$u->GetArticleClassInfo($classid);
-                        $curclasstitle=$dt["title"]."(根目录)";
-                        $dt1=$u->GetChildArticleClassList($dt["pid"]);
-                        foreach ($dt1 as $row) {
-                            $childclassurl=$childclassurl."<a href='articlelist.php?classid=".$row["id"]."'>".$row["title"]."</a>&nbsp;&nbsp;";
-                        }
-                    }
-                    else
-                    {
-                        $dt=$u->GetArticleClassInfo($classid);
-                        $curclasstitle=$dt["title"];
-                        $childclassurl="<a href='articlelist.php?classid=".$dt["pid"]."'>上级目录</a>&nbsp;&nbsp;";
-                        $dt1=$u->GetChildArticleClassList($classid);
-                        foreach ($dt1 as $row) {
-                            $childclassurl=$childclassurl."<a href='articlelist.php?classid=".$row["id"]."'>".$row["title"]."</a>&nbsp;&nbsp;";
-                        }
-
-                    }
                     echo "栏目：".$curclasstitle.'<br>请点击选择栏目：'.$childclassurl;
                    ?>
                     <br>标题：
@@ -76,6 +77,7 @@
                     <table id="pager"></table>
             </div>
         </div>
+        <input type="hidden" id="classid" value="<?php echo $addclassid; ?>">
     </form>
 </body>
 </html>

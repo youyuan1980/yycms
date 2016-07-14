@@ -1,8 +1,7 @@
 //查询用户
 function search()
 {
-    var classid=GetRequest("classid");
-    if (classid=="") {classid="-1";}
+    var classid=$("#classid").attr("value");
     articlelist.KeyColumnName = "id";
     articlelist.CaptionColumnString = "标题";
     articlelist.ColumnString = "title";
