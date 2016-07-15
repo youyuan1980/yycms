@@ -131,6 +131,27 @@
         	return $this->Db->Execute($sql);
         }
 
+        public function ChangePwd($userid,$oldpwd,$userpwd)
+        {
+            $flag=$this->Login($userid,$oldpwd);
+            if ($flag=="1") {
+                $pwd=md5($userpwd);
+                $sql="update users set USERPASSWORD='".$pwd."' where userid='".$userid."'";
+                if ($this->Db->Execute($sql)) {
+                    $flag='密码修改成功';
+                }
+                else
+                {
+                    $flag='密码修改失败';
+                }
+            }
+            else
+            {
+                $flag='原密码不正确';
+            }
+            return $flag;
+        }
+
 		public function GetUserList($username,$page,$pagesize)
         {
             $sql="select userid,username from users ";
@@ -155,11 +176,6 @@
         {
             $sql="select count(*) from users where userid='".$UserID."'";
             return $this->Db->GetRowsCount($sql);
-        }
-
-		public function UpdUser()
-        {
-
         }
 	}
 ?>
